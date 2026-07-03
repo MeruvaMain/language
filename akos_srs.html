@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AKOS · 記憶</title>
+<meta name="theme-color" content="#EFEADD">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AKOS">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<script>
+/* manifest inline (Android/Chrome cài được ngay; iOS dùng apple-touch-icon file bên cạnh) */
+const _mf={name:"AKOS",short_name:"AKOS",start_url:".",display:"standalone",
+  background_color:"#EFEADD",theme_color:"#EFEADD",
+  icons:[{src:"icon-192.png",sizes:"192x192",type:"image/png"},
+         {src:"icon-512.png",sizes:"512x512",type:"image/png"}]};
+const _l=document.createElement("link");_l.rel="manifest";
+_l.href=URL.createObjectURL(new Blob([JSON.stringify(_mf)],{type:"application/json"}));
+document.head.appendChild(_l);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Fraunces:ital,opsz,wght@1,9..144,400;0,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEADD; --paper-2:#E6E0CF;
+    --ink:#211C16; --ink-soft:#5A5145; --muted:#948A78;
+    --line:#D8D0BD; --shu:#C0392B; --shu-deep:#9C2A20; --gold:#B08D4F;
+    --spring:cubic-bezier(.34,1.56,.64,1); --ease:cubic-bezier(.4,0,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{background:#cfc7b3;font-family:"Zen Kaku Gothic New",system-ui,sans-serif;color:var(--ink);
+    display:flex;align-items:center;justify-content:center;min-height:100dvh}
+  .device{width:100%;max-width:412px;height:100dvh;max-height:900px;
+    background:radial-gradient(120% 80% at 50% -10%, #F4EFE3 0%, var(--paper) 45%, var(--paper-2) 100%);
+    position:relative;overflow:hidden;display:flex;flex-direction:column;
+    box-shadow:0 30px 80px -20px rgba(33,28,22,.45)}
+  .device::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");mix-blend-mode:multiply}
+
+  .thread{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:20px 22px 6px}
+  .thread .date{font-family:"Shippori Mincho",serif;font-size:12px;color:var(--muted);letter-spacing:.06em}
+  .brain-dot{display:flex;align-items:center;gap:7px;cursor:pointer;font-size:10px;color:var(--muted);opacity:.75;letter-spacing:.04em}
+  .brain-dot b{font-weight:700;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .brain-dot .ring{width:22px;height:22px;border-radius:50%;
+    background:conic-gradient(var(--shu) 0 var(--cap,0%), var(--line) var(--cap,0%) 100%);display:grid;place-items:center}
+  .brain-dot .ring::after{content:"";width:14px;height:14px;border-radius:50%;background:var(--paper)}
+
+  .coach{position:relative;z-index:3;text-align:center;font-family:"Shippori Mincho",serif;
+    color:var(--muted);font-size:11px;letter-spacing:.06em;min-height:18px;padding:10px 30px 0;
+    opacity:0;transform:translateY(4px);transition:.5s var(--ease)}
+  .coach.on{opacity:1;transform:none}
+
+  .stage{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 28px 0}
+  .kind{font-size:9px;letter-spacing:.3em;color:var(--muted);opacity:.65;margin-bottom:28px;display:flex;align-items:center;gap:9px}
+  .kind .jlpt{color:var(--shu-deep);border:1px solid var(--shu);border-radius:2px;padding:1px 6px;font-weight:700;letter-spacing:.1em}
+  .kind .newtag{color:var(--gold);border:1px solid var(--gold);border-radius:2px;padding:1px 6px;font-weight:700;letter-spacing:.1em}
+  .card{width:100%;text-align:center;transition:.45s var(--spring)}
+  .card.swap{opacity:0;transform:translateY(14px) scale(.97)}
+  .jp{font-family:"Shippori Mincho",serif;font-weight:600;color:var(--ink);line-height:1.15;word-break:break-word}
+  .jp.lg{font-size:62px}.jp.md{font-size:34px;line-height:1.4}
+  .reading{margin-top:14px;font-family:"Shippori Mincho",serif;font-size:15px;color:var(--muted);letter-spacing:.08em}
+  .prompt-q{margin-top:32px;font-size:11px;color:var(--muted);opacity:.7;letter-spacing:.08em}
+  .answer{margin-top:18px;opacity:0;max-height:0;overflow:hidden;transition:.5s var(--ease)}
+  .answer.show{opacity:1;max-height:260px}
+  .answer .vi{font-family:"Fraunces",serif;font-style:italic;font-size:24px;color:var(--shu-deep);line-height:1.3}
+  .answer .vi.as-jp{font-family:"Shippori Mincho",serif;font-style:normal;font-size:30px}
+  .ans-sub{font-family:"Shippori Mincho",serif;font-size:15px;color:var(--muted);margin-top:8px;letter-spacing:.06em}
+  .jp.as-vi{font-family:"Fraunces",serif;font-style:italic;font-weight:400;font-size:36px;color:var(--ink)}
+  .answer .note{font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:300px;margin:12px auto 0}
+  .answer .sched{font-size:9.5px;color:var(--muted);opacity:.65;margin-top:16px;letter-spacing:.05em}
+  .answer .sched b{color:var(--ink-soft)}
+
+  /* done state */
+  .donebox{text-align:center;display:none}
+  .donebox .big{font-family:"Shippori Mincho",serif;font-size:52px;color:var(--shu-deep)}
+  .donebox p{margin-top:14px;font-size:14px;color:var(--ink-soft);line-height:1.7}
+  .donebox p b{color:var(--ink)}
+
+  .foot{position:relative;z-index:3;padding:0 28px 72px;display:flex;align-items:center;gap:14px;justify-content:center}
+  .btn{flex:1;border:none;cursor:pointer;font-family:inherit;background:var(--ink);color:var(--paper);
+    padding:18px;border-radius:3px;font-size:15px;letter-spacing:.04em;font-weight:500;transition:.3s var(--spring)}
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.35;pointer-events:none}
+  .btn.ghost{background:transparent;color:var(--ink-soft);border:1px solid var(--line);flex:0 0 auto;width:60px}
+
+  .seal{position:absolute;right:24px;bottom:170px;z-index:6;width:56px;height:56px;border:none;cursor:pointer;
+    background:var(--shu);border-radius:7px;box-shadow:0 8px 22px -6px rgba(156,42,32,.6), inset 0 0 0 2px var(--shu-deep);
+    display:grid;place-items:center;transition:.4s var(--spring)}
+  .seal:active{transform:scale(.9) rotate(-4deg)}
+  .seal span{font-family:"Shippori Mincho",serif;color:#F4E9D9;font-size:28px;font-weight:700;line-height:1;margin-top:-2px}
+
+  .danger-row{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+  .danger-row .danger{margin-top:0}
+  .credit-inline{font-size:8px;font-weight:300;color:var(--muted);letter-spacing:.28em;opacity:.55;cursor:pointer;padding:2px}
+  .modal{position:absolute;inset:0;z-index:50;display:none;align-items:center;justify-content:center;
+    background:rgba(20,16,12,.4);backdrop-filter:blur(2px)}
+  .modal.on{display:flex}
+  .modal .box{background:var(--paper);border-radius:10px;padding:26px 24px;width:82%;max-width:300px;text-align:center;
+    box-shadow:0 24px 60px -20px rgba(0,0,0,.5)}
+  .modal .box p{font-size:14px;color:var(--ink);line-height:1.6;margin-bottom:20px}
+  .modal .row{display:flex;gap:10px}
+  .modal .row .btn{padding:13px;font-size:14px}
+  .modal .row .btn.ghost{flex:1;width:auto}
+
+  .scrim{position:absolute;inset:0;z-index:20;background:rgba(20,16,12,.34);backdrop-filter:blur(2px);
+    opacity:0;pointer-events:none;transition:.35s var(--ease)}
+  .scrim.on{opacity:1;pointer-events:auto}
+  /* morphing popover: nở ra từ vị trí nút ＋ (blur+scale, spring) */
+  .pop{position:absolute;left:16px;right:16px;bottom:120px;z-index:21;background:var(--paper);border-radius:14px;
+    padding:22px 20px;box-shadow:0 24px 60px -18px rgba(0,0,0,.45);
+    opacity:0;pointer-events:none;transform:scale(.12);filter:blur(10px);
+    transform-origin:calc(100% - 38px) calc(100% + 36px);
+    transition:transform .45s var(--spring),opacity .3s var(--ease),filter .35s var(--ease);
+    max-height:72dvh;overflow-y:auto}
+  .pop.on{opacity:1;pointer-events:auto;transform:scale(1);filter:blur(0)}
+  .pop h3{font-family:"Shippori Mincho",serif;font-weight:600;font-size:17px;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+  .pop h3 small{font-size:12px;color:var(--muted);font-weight:400;font-family:"Zen Kaku Gothic New"}
+  .seal.hide{transform:scale(.4) rotate(8deg);opacity:0;pointer-events:none}
+  .addrow{margin-top:12px}
+  .addrow .btn{width:100%;background:transparent;color:var(--shu-deep);border:1px dashed var(--shu);font-size:13px;padding:12px}
+  .sheet{position:absolute;left:0;right:0;bottom:0;z-index:21;background:var(--paper);border-radius:18px 18px 0 0;
+    padding:24px 24px calc(24px + env(safe-area-inset-bottom));transform:translateY(110%);transition:.45s var(--spring);
+    box-shadow:0 -20px 50px -20px rgba(0,0,0,.4);max-height:88dvh;overflow-y:auto}
+  .sheet.on{transform:none}
+  .sheet h3{font-family:"Shippori Mincho",serif;font-weight:600;font-size:17px;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+  .sheet h3 small{font-size:12px;color:var(--muted);font-weight:400;font-family:"Zen Kaku Gothic New"}
+  .dictsize{margin-left:auto;font-size:11px;color:var(--muted);letter-spacing:.04em}
+  .dictsize b{color:var(--shu-deep);font-weight:700}
+  .sub{font-size:12.5px;color:var(--ink-soft);margin:4px 0 16px;line-height:1.5}
+
+  .field{width:100%;background:transparent;border:none;outline:none;font-family:"Shippori Mincho",serif;
+    font-size:24px;color:var(--ink);border-bottom:1.5px solid var(--ink);padding:6px 2px 12px}
+  .field::placeholder{color:var(--muted);font-size:18px}
+
+  .sugg{margin-top:10px}
+  .sugg-row{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:.2s}
+  .sugg-row:active{background:rgba(192,57,43,.05)}
+  .sugg-row .s-jp{flex:1;font-family:"Shippori Mincho",serif;font-size:20px;color:var(--ink);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .sugg-row .s-jlpt{font-size:10px;color:var(--shu-deep);border:1px solid var(--line);border-radius:2px;padding:1px 5px;letter-spacing:.06em}
+  .sugg-row .s-in{font-size:10px;color:var(--gold);letter-spacing:.06em}
+  .nomatch{padding:18px 4px;text-align:center}
+  .nomatch p{font-size:13px;color:var(--ink-soft);margin-bottom:14px}
+
+  .preview{margin-top:6px}
+  .pv-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-bottom:4px}
+  .pv-jp{font-family:"Shippori Mincho",serif;font-size:38px;color:var(--ink);line-height:1.25;word-break:break-word;width:100%}
+  .pv-jp.long{font-size:24px}
+  .pv-rd{font-size:13px;color:var(--muted);font-family:"Shippori Mincho",serif;line-height:1.6;word-break:break-word}
+  .pv-auto{margin-left:auto;font-size:10px;color:var(--shu-deep);border:1px solid var(--shu);border-radius:2px;padding:2px 7px;letter-spacing:.1em}
+  .pv-line{opacity:0;transform:translateY(6px);transition:.45s var(--spring)}
+  .pv-line.on{opacity:1;transform:none}
+  .pv-vi{font-family:"Fraunces",serif;font-style:italic;font-size:21px;color:var(--shu-deep);margin:6px 0 14px;line-height:1.4;word-break:break-word}
+  .pv-meta{display:flex;gap:8px;align-items:center;margin-bottom:14px}
+  .tag{font-size:11px;color:var(--ink-soft);border:1px solid var(--line);border-radius:20px;padding:4px 11px;letter-spacing:.03em}
+  .tag.shu{color:var(--shu-deep);border-color:var(--shu)}
+  .kchips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+  .kchip{display:flex;flex-direction:column;align-items:center;border:1px solid var(--line);border-radius:4px;padding:6px 10px;min-width:46px}
+  .kchip .kc{font-family:"Shippori Mincho",serif;font-size:22px;color:var(--ink);line-height:1}
+  .kchip .kr{font-size:9px;color:var(--muted);margin-top:3px}
+  .kchip .kv{font-size:9px;color:var(--shu-deep);margin-top:1px}
+  .pv-note{font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:18px}
+
+  .manual{margin-top:8px}
+  .mlabel{font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin:14px 0 6px}
+  .minput{width:100%;background:transparent;border:none;outline:none;border-bottom:1px solid var(--line);
+    padding:8px 2px;font-size:15px;color:var(--ink);font-family:inherit}
+  .minput::placeholder{color:var(--muted)}
+  .seg{display:flex;gap:6px;flex-wrap:wrap}
+  .seg span{font-size:12px;color:var(--ink-soft);border:1px solid var(--line);border-radius:20px;padding:6px 12px;cursor:pointer;transition:.2s}
+  .seg span.on{color:var(--shu-deep);border-color:var(--shu);background:rgba(192,57,43,.06)}
+  .save-row{margin-top:22px}
+  .link{display:block;text-align:center;margin-top:12px;font-size:12px;color:var(--muted);cursor:pointer;text-decoration:underline}
+  .hint{font-size:11px;color:var(--muted);margin-top:14px;text-align:center;line-height:1.6}
+  .hint b{color:var(--ink-soft)}
+
+  .stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line)}
+  .stat-row:last-child{border:none}
+  .stat-row .k{font-size:13px;color:var(--ink-soft)}
+  .stat-row .k small{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+  .stat-row .v{font-family:"Fraunces",serif;font-style:italic;font-size:20px;color:var(--ink)}
+  .stat-row .v.shu{color:var(--shu-deep)}
+  .danger{margin-top:18px;text-align:center;font-size:11px;color:var(--muted);text-decoration:underline;cursor:pointer}
+
+  .toast{position:absolute;left:50%;bottom:30px;transform:translate(-50%,20px);z-index:40;
+    background:var(--ink);color:var(--paper);font-size:13px;padding:11px 18px;border-radius:4px;
+    opacity:0;pointer-events:none;transition:.4s var(--spring);white-space:nowrap}
+  .toast.on{opacity:1;transform:translate(-50%,0)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="device" id="app">
+
+  <div class="thread">
+    <div class="date" id="dateJp">今日</div>
+    <div class="brain-dot" id="brainBtn">
+      <span><b id="capNum">0</b>% 定着</span>
+      <div class="ring" id="capRing" style="--cap:0%"></div>
+    </div>
+  </div>
+
+  <div class="coach" id="coach"></div>
+
+  <div class="stage">
+    <div class="card" id="card">
+      <div class="kind"><span id="kindType">TỪ VỰNG</span><span class="jlpt" id="kindJlpt">N5</span><span class="newtag" id="kindNew" style="display:none">新</span></div>
+      <div class="jp lg" id="jp"></div>
+      <div class="reading" id="reading"></div>
+      <div class="prompt-q" id="promptq">意味は？ — タップで表示</div>
+      <div class="answer" id="answer">
+        <div class="vi" id="vi"></div>
+        <div class="ans-sub" id="ansSub"></div>
+        <div class="note" id="note"></div>
+        <div class="sched" id="sched"></div>
+      </div>
+    </div>
+    <div class="donebox" id="donebox">
+      <div class="big">済</div>
+      <p id="doneMsg"></p>
+    </div>
+  </div>
+
+
+  <div class="foot">
+    <button class="btn ghost" id="hardBtn" title="まだ">朧</button>
+    <button class="btn" id="nextBtn">めくる</button>
+  </div>
+
+  <button class="seal" id="addBtn" aria-label="追加"><span>＋</span></button>
+
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ADD SHEET -->
+  <div class="pop" id="addSheet">
+    <h3>＋ <small>今日は何を追加？</small><span class="dictsize">辞書 <b id="dictN">0</b> 語</span></h3>
+    <div class="sub">日本語（漢字・かな）またはベトナム語で入力。残りは自動入力。</div>
+    <input class="field" id="input" placeholder="食べる · さいふ · ăn …" autocomplete="off">
+    <div class="sugg" id="sugg"></div>
+
+    <div class="preview" id="preview" style="display:none">
+      <div class="pv-head">
+        <span class="pv-jp" id="pvJp"></span>
+        <span class="pv-rd" id="pvRd"></span>
+      </div>
+      <div class="pv-line" id="pvL1"><div class="pv-vi" id="pvVi"></div></div>
+      <div class="pv-line" id="pvL2"><div class="pv-meta"><span class="tag shu" id="pvJlpt"></span><span class="tag" id="pvType"></span></div></div>
+      <div class="pv-line" id="pvL3"><div class="kchips" id="pvK"></div></div>
+      <div class="pv-line" id="pvL4"><div class="pv-note" id="pvNote"></div></div>
+      <div class="save-row"><button class="btn" id="addPv" style="width:100%">復習に追加</button></div>
+      <span class="link" id="backSugg">← 別の語を選ぶ</span>
+    </div>
+
+    <div class="manual" id="manual" style="display:none">
+      <div class="mlabel">日本語</div>
+      <input class="minput" id="mJp" placeholder="財布">
+      <div class="mlabel">読み方</div>
+      <input class="minput" id="mRd" placeholder="さいふ">
+      <div class="mlabel">意味（ベトナム語）</div>
+      <input class="minput" id="mVi" placeholder="cái ví（ベトナム語）">
+      <div class="mlabel">種類</div>
+      <div class="seg" id="mType">
+        <span data-v="語彙" class="on">語彙</span><span data-v="文法">文法</span>
+        <span data-v="漢字">漢字</span><span data-v="文">文</span>
+      </div>
+      <div class="mlabel">JLPT</div>
+      <div class="seg" id="mJlpt">
+        <span data-v="N5" class="on">N5</span><span data-v="N4">N4</span><span data-v="N3">N3</span>
+        <span data-v="N2">N2</span><span data-v="N1">N1</span>
+      </div>
+      <div class="save-row"><button class="btn" id="addMan" style="width:100%">追加して辞書に保存</button></div>
+      <span class="link" id="backSugg2">← 検索に戻る</span>
+    </div>
+
+    <div class="hint" id="addHint">例: <b>食べる</b> · <b>たべる</b> · <b>ví</b> · <b>〜てしまう</b></div>
+  </div>
+
+  <!-- STATS SHEET -->
+  <div class="sheet" id="statSheet">
+    <h3>記憶 <small>Memory Engine</small></h3>
+    <div class="sub">端末内の学習ログから算出。</div>
+    <div class="stat-row"><span class="k">総カード数</span><span class="v" id="sTotal">0</span></div>
+    <div class="stat-row"><span class="k">定着<small>間隔21日以上</small></span><span class="v shu" id="sMaster">0</span></div>
+    <div class="stat-row"><span class="k">復習待ち<small>期限切れ</small></span><span class="v" id="sDebt">0</span></div>
+    <div class="stat-row"><span class="k">7日正答率</span><span class="v" id="sRet">—</span></div>
+    <div class="stat-row"><span class="k">反応速度<small>直近20回平均</small></span><span class="v" id="sReact">—</span></div>
+    <div class="stat-row"><span class="k">連続日数</span><span class="v shu" id="sStreak">0</span></div>
+    <div class="stat-row"><span class="k">辞書<small>内蔵＋追加分</small></span><span class="v" id="sDict">0</span></div>
+    <div class="danger-row">
+      <span class="credit-inline" id="meruva">BY MERUVA</span>
+      <span class="danger" id="resetBtn">全データを消去（リセット）</span>
+    </div>
+  </div>
+
+  <div class="modal" id="mrvModal">
+    <div class="box">
+      <p>公式サイトへ移動します<br><b>meruva.vn</b></p>
+      <div class="row">
+        <button class="btn ghost" id="mrvNo">いいえ</button>
+        <button class="btn" id="mrvYes" style="flex:1">はい</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+/* ═══════════ CONFIG ═══════════ */
+
+const MASTER_DAYS = 21;      // interval >= 21 ngày = đã thuộc
+const LS = {dict:"akos_dict", cards:"akos_cards", log:"akos_log", meta:"akos_meta"};
+const DAY = 86400000;
+const today = () => { const d=new Date(); return new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime(); };
+const todayKey = () => new Date().toISOString().slice(0,10);
+
+/* ═══════════ TỪ ĐIỂN TĨNH (demo — cần rà lại trước production) ═══════════ */
+const KANJI = {
+ "食":["ショク・た","THỰC ăn"],"飲":["イン・の","ẨM uống"],"行":["コウ・い","HÀNH đi"],
+ "来":["ライ・く","LAI đến"],"見":["ケン・み","KIẾN thấy"],"聞":["ブン・き","VĂN nghe"],
+ "話":["ワ・はな","THOẠI nói"],"読":["ドク・よ","ĐỘC đọc"],"書":["ショ・か","THƯ viết"],
+ "買":["バイ・か","MÃI mua"],"財":["ザイ","TÀI tiền"],"布":["フ・ぬの","BỐ vải"],
+ "学":["ガク","HỌC"],"校":["コウ","HIỆU trường"],"先":["セン・さき","TIÊN trước"],
+ "生":["セイ・い","SINH sống"],"水":["スイ・みず","THỦY nước"],"火":["カ・ひ","HỎA lửa"],
+ "日":["ニチ・ひ","NHẬT ngày"],"本":["ホン","BẢN sách"],"時":["ジ・とき","THỜI giờ"],
+ "間":["カン・あいだ","GIAN khoảng"],"雨":["ウ・あめ","VŨ mưa"],"雪":["セツ・ゆき","TUYẾT"],
+ "事":["ジ・こと","SỰ việc"],"会":["カイ","HỘI họp"],"社":["シャ","XÃ công ty"],
+ "料":["リョウ","LIỆU"],"理":["リ","LÝ lẽ"],"天":["テン","THIÊN trời"],"気":["キ","KHÍ"],
+ "電":["デン","ĐIỆN"],"車":["シャ・くるま","XA xe"],"家":["カ・いえ","GIA nhà"],
+ "名":["メイ・な","DANH tên"],"前":["ゼン・まえ","TIỀN trước"],"友":["ユウ・とも","HỮU bạn"],
+ "達":["タツ","ĐẠT"],"金":["キン・かね","KIM tiền"],"勉":["ベン","MIỄN"],"強":["キョウ","CƯỜNG mạnh"],
+ "旅":["リョ・たび","LỮ đi xa"],"忘":["ボウ・わす","VONG quên"],"覚":["カク・おぼ","GIÁC nhớ"],
+ "犬":["ケン・いぬ","KHUYỂN chó"],"猫":["ビョウ・ねこ","MIÊU mèo"],"大":["ダイ・おお","ĐẠI to"],
+ "小":["ショウ・ちい","TIỂU nhỏ"],"高":["コウ・たか","CAO"],"安":["アン・やす","AN rẻ"],
+ "新":["シン・あたら","TÂN mới"],"古":["コ・ふる","CỔ cũ"],"楽":["ラク・たの","LẠC vui"],
+ "難":["ナン・むずか","NAN khó"],"簡":["カン","GIẢN"],"単":["タン","ĐƠN"],"仕":["シ","SĨ làm"]
+};
+const SEED_DICT = [
+ ["食べる","たべる","ăn","N5","Từ vựng","Động từ nhóm 2 (ru-verb)."],
+ ["飲む","のむ","uống","N5","Từ vựng","Động từ nhóm 1."],
+ ["行く","いく","đi","N5","Từ vựng","Bất quy tắc nhẹ: 行って."],
+ ["来る","くる","đến","N5","Từ vựng","Động từ bất quy tắc."],
+ ["見る","みる","xem, nhìn","N5","Từ vựng",""],
+ ["聞く","きく","nghe / hỏi","N5","Từ vựng",""],
+ ["話す","はなす","nói chuyện","N5","Từ vựng",""],
+ ["読む","よむ","đọc","N5","Từ vựng",""],
+ ["書く","かく","viết","N5","Từ vựng",""],
+ ["買う","かう","mua","N5","Từ vựng",""],
+ ["財布","さいふ","cái ví","N4","Từ vựng","財 tài (tiền) + 布 bố (vải)."],
+ ["学校","がっこう","trường học","N5","Từ vựng",""],
+ ["先生","せんせい","giáo viên","N5","Từ vựng",""],
+ ["学生","がくせい","học sinh, sinh viên","N5","Từ vựng",""],
+ ["友達","ともだち","bạn bè","N5","Từ vựng",""],
+ ["水","みず","nước","N5","Từ vựng",""],
+ ["日本","にほん","Nhật Bản","N5","Từ vựng",""],
+ ["時間","じかん","thời gian","N5","Từ vựng",""],
+ ["電車","でんしゃ","tàu điện","N5","Từ vựng",""],
+ ["車","くるま","xe hơi","N5","Từ vựng",""],
+ ["家","いえ","nhà","N5","Từ vựng",""],
+ ["仕事","しごと","công việc","N5","Từ vựng",""],
+ ["会社","かいしゃ","công ty","N5","Từ vựng",""],
+ ["食事","しょくじ","bữa ăn","N4","Từ vựng",""],
+ ["食堂","しょくどう","nhà ăn, canteen","N4","Từ vựng",""],
+ ["料理","りょうり","món ăn / nấu ăn","N5","Từ vựng",""],
+ ["天気","てんき","thời tiết","N5","Từ vựng",""],
+ ["雨","あめ","mưa","N5","Từ vựng",""],
+ ["忘れる","わすれる","quên","N5","Từ vựng",""],
+ ["覚える","おぼえる","nhớ, ghi nhớ","N4","Từ vựng",""],
+ ["勉強","べんきょう","việc học","N5","Từ vựng",""],
+ ["旅行","りょこう","du lịch","N5","Từ vựng",""],
+ ["お金","おかね","tiền","N5","Từ vựng",""],
+ ["名前","なまえ","tên","N5","Từ vựng",""],
+ ["本","ほん","sách","N5","Từ vựng",""],
+ ["犬","いぬ","con chó","N5","Từ vựng",""],
+ ["猫","ねこ","con mèo","N5","Từ vựng",""],
+ ["大きい","おおきい","to, lớn","N5","Từ vựng","Tính từ -i."],
+ ["小さい","ちいさい","nhỏ","N5","Từ vựng","Tính từ -i."],
+ ["高い","たかい","cao / đắt","N5","Từ vựng",""],
+ ["安い","やすい","rẻ","N5","Từ vựng",""],
+ ["新しい","あたらしい","mới","N5","Từ vựng",""],
+ ["古い","ふるい","cũ","N5","Từ vựng",""],
+ ["楽しい","たのしい","vui","N5","Từ vựng",""],
+ ["難しい","むずかしい","khó","N5","Từ vựng",""],
+ ["簡単","かんたん","đơn giản, dễ","N4","Từ vựng","Tính từ -na."],
+ ["〜てしまう","~te shimau","lỡ… / …mất","N4","Ngữ pháp","Hành động hoàn tất hoặc đáng tiếc. Vd: 忘れてしまった."],
+ ["〜たい","~tai","muốn (làm gì)","N5","Ngữ pháp","食べたい = muốn ăn."],
+ ["〜なければならない","~nakereba naranai","phải (làm gì)","N4","Ngữ pháp","Nghĩa vụ, bắt buộc."],
+ ["〜ことができる","~koto ga dekiru","có thể (làm gì)","N4","Ngữ pháp","Khả năng."],
+ ["〜たほうがいい","~ta hou ga ii","nên (làm gì)","N4","Ngữ pháp","Lời khuyên."],
+ ["〜かもしれない","~kamoshirenai","có lẽ, có thể","N4","Ngữ pháp","Phỏng đoán độ chắc thấp."],
+ ["〜ながら","~nagara","vừa… vừa…","N4","Ngữ pháp","Hai hành động cùng lúc."],
+ ["〜ている","~te iru","đang…","N5","Ngữ pháp","Tiếp diễn / trạng thái."],
+ ["〜ので","~node","bởi vì (khách quan)","N4","Ngữ pháp","Lịch sự hơn から."]
+].map(r=>({jp:r[0],reading:r[1],vi:r[2],jlpt:r[3],type:r[4],note:r[5]}));
+
+/* ═══════════ STORAGE — ưu tiên KHÔNG mất dữ liệu người dùng ═══════════
+   • Lưu localStorage trên máy người dùng (không server)
+   • Backup snapshot mỗi ngày (akos_backup_YYYY-MM-DD), giữ 7 bản gần nhất
+   • Data chính hỏng/parse lỗi → tự khôi phục từ backup mới nhất
+   • Từ điển seed cập nhật bằng cách MERGE — không bao giờ ghi đè mục user thêm
+   • Reset phải xác nhận 2 lần và vẫn giữ lại backup
+═══════════════════════════════════════════════════════════════════ */
+const SCHEMA_VER=1;
+function load(k,fb){ try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch(e){return fb;} }
+function save(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){ toastSafe("保存できません（容量不足）"); } }
+function toastSafe(m){ try{toast(m);}catch(e){} }
+
+function latestBackup(){
+  const ks=Object.keys(localStorage).filter(k=>k.startsWith("akos_backup_")).sort();
+  if(!ks.length) return null;
+  try{return JSON.parse(localStorage.getItem(ks[ks.length-1]));}catch(e){return null;}
+}
+let dict  = load(LS.dict, null);
+let cards = load(LS.cards, null);
+let log   = load(LS.log, null);
+let meta  = load(LS.meta, null);
+/* khôi phục từ backup nếu data chính mất/hỏng nhưng backup còn */
+if((!cards||!dict)){
+  const bk=latestBackup();
+  if(bk){ dict=dict||bk.dict; cards=cards||bk.cards; log=log||bk.log; meta=meta||bk.meta; }
+}
+dict = dict||SEED_DICT.slice(); log=log||[]; meta=meta||{newDate:"",newCount:0,streakDate:"",streak:0};
+/* merge seed mới vào dict — chỉ THÊM mục chưa có, không đụng mục user */
+SEED_DICT.forEach(s=>{ if(!dict.some(e=>e.jp===s.jp)) dict.push(s); });
+
+function makeBackup(){
+  const key="akos_backup_"+todayKey();
+  save(key,{ver:SCHEMA_VER,dict,cards,log:log.slice(-2000),meta});
+  const ks=Object.keys(localStorage).filter(k=>k.startsWith("akos_backup_")).sort();
+  while(ks.length>7) localStorage.removeItem(ks.shift());
+}
+
+/* thẻ mồi lần đầu */
+if(!cards){
+  cards = [mkCard(SEED_DICT[0]), mkCard(SEED_DICT[46]), mkCard(SEED_DICT[10])];
+  persistAll();
+}
+function mkCard(e){
+  return {id:"c"+Date.now()+Math.random().toString(36).slice(2,6),
+    jp:e.jp,reading:e.reading,vi:e.vi,type:e.type,jlpt:e.jlpt,note:e.note||"",
+    ease:2.5, interval:0, due:today(), reps:0, lapses:0, isNew:true};
+}
+function persistAll(){ save(LS.dict,dict); save(LS.cards,cards); save(LS.log,log); save(LS.meta,meta); makeBackup(); }
+
+/* ═══════════ MEMORY ENGINE (SM-2 rút gọn, deterministic) ═══════════
+   Nhớ (grade OK):
+     reps++ ; isNew=false
+     interval: 0→1 ngày, 1→3 ngày, else round(interval × ease)
+     ease = min(2.8, ease + 0.05)
+     due = today + interval
+   Chưa nhớ (朧):
+     lapses++ ; interval=0 ; ease = max(1.3, ease − 0.2)
+     due = today  → quay lại ngay trong phiên
+════════════════════════════════════════════════════════════════════ */
+function grade(card, ok){
+  if(ok){
+    card.reps++; card.isNew=false;
+    card.interval = Math.min(365, card.interval===0 ? 1 : card.interval===1 ? 3 : Math.round(card.interval*card.ease));
+    card.ease = Math.min(2.8, +(card.ease+0.05).toFixed(2));
+    card.due  = today() + card.interval*DAY;
+  }else{
+    card.lapses++; card.interval=0;
+    card.ease = Math.max(1.3, +(card.ease-0.2).toFixed(2));
+    card.due  = today();
+  }
+}
+
+/* ═══════════ WEIGHTED RANDOM SAMPLER ═══════════
+   Trọng số (deterministic, giải thích được):
+     interval 0   (mới / vừa quên) → 10
+     interval 1–3 (đang học)       → 6
+     interval 4–20 (nhớ non)       → 3
+     interval ≥21 (đã thuộc)       → 1
+   + min(4, lapses)   : hay trượt → hiện dày hơn
+   × 1.5 nếu quá hạn (due ≤ hôm nay)
+   Kẹp cuối: sàn 1, trần 20 → thẻ thuộc luôn giữ ≥5%
+   tỉ lệ so với thẻ nóng nhất, không bao giờ biến mất.
+   Không lặp lại 2 thẻ vừa hiện (khi bộ > 3 thẻ).
+═══════════════════════════════════════ */
+function weightOf(c){
+  let w = c.interval===0 ? 10 : c.interval<=3 ? 6 : c.interval<MASTER_DAYS ? 3 : 1;
+  w += Math.min(4, c.lapses);
+  if(!c.isNew && c.due<=today()) w*=1.5;
+  return Math.min(20, Math.max(1, w));
+}
+let lastIds=[];
+function pickCard(){
+  if(!cards.length) return null;
+  let pool = cards.length>3 ? cards.filter(c=>!lastIds.includes(c.id)) : cards;
+  if(!pool.length) pool=cards;
+  const total=pool.reduce((s,c)=>s+weightOf(c),0);
+  let r=Math.random()*total;
+  for(const c of pool){ r-=weightOf(c); if(r<=0) return c; }
+  return pool[pool.length-1];
+}
+
+/* ═══════════ SESSION STATE ═══════════ */
+let cur=null, revealed=false, doneCount=0, tShow=0;
+
+/* ═══════════ DOM ═══════════ */
+const $=s=>document.querySelector(s);
+const cardEl=$("#card"),jp=$("#jp"),reading=$("#reading"),vi=$("#vi"),note=$("#note"),sched=$("#sched"),
+ answer=$("#answer"),promptq=$("#promptq"),kindType=$("#kindType"),kindJlpt=$("#kindJlpt"),kindNew=$("#kindNew"),
+ coach=$("#coach"),donebox=$("#donebox"),
+ nextBtn=$("#nextBtn"),hardBtn=$("#hardBtn");
+
+function setDate(){const d=new Date();const w=["日","月","火","水","木","金","土"][d.getDay()];
+  $("#dateJp").textContent=`${d.getMonth()+1}月${d.getDate()}日 (${w})`;}
+
+function renderBeads(){}
+
+/* Coach: rule thật từ data, không random */
+function coachMsg(){
+  const t=today();
+  const debt=cards.filter(c=>!c.isNew&&c.due<=t).length;
+  if(debt>=8) return "復習が溜まっています — 古いカードを優先します";
+  if(cur&&cur.lapses>=3) return "このカードは"+cur.lapses+"回ミス — ゆっくりで大丈夫";
+  const done=log.filter(l=>l.ts>=t).length;
+  if(done>0&&done%20===0) return "今日"+done+"回 — 休憩もあり";
+  return "";
+}
+function showCoach(){const m=coachMsg();coach.textContent=m;coach.classList.toggle("on",!!m);}
+
+let face="jp";
+function next(swap){
+  if(!cards.length){ showEmpty(); return; }
+  cur=pickCard();
+  lastIds.push(cur.id); if(lastIds.length>2) lastIds.shift();
+  /* fix flash: ẩn đáp án NGAY trước khi swap, không đợi paint */
+  revealed=false;answer.classList.remove("show");
+  const paint=()=>{
+    cardEl.style.display="block";donebox.style.display="none";
+    hardBtn.disabled=false;nextBtn.disabled=false;
+    /* random MẶT thẻ: jp / cách đọc / nghĩa Việt */
+    const faces=["jp","vi"]; if(cur.reading) faces.push("reading");
+    face=faces[Math.floor(Math.random()*faces.length)];
+    const big=(cur.jp.length<=3 && !/[〜～]/.test(cur.jp));
+    jp.classList.remove("as-vi");
+    if(face==="jp"){
+      jp.className="jp "+(big?"lg":"md"); jp.textContent=cur.jp;
+      promptq.textContent="意味は？ — タップで表示";
+    }else if(face==="reading"){
+      jp.className="jp md"; jp.textContent=cur.reading;
+      promptq.textContent="どの語？ — タップで表示";
+    }else{
+      jp.className="jp md as-vi"; jp.textContent=cur.vi;
+      promptq.textContent="日本語で？ — タップで表示";
+    }
+    reading.style.display="none";
+    note.textContent=cur.note||"";
+    kindType.textContent=typeJP(cur.type);kindJlpt.textContent=cur.jlpt||"N5";
+    kindNew.style.display=cur.isNew?"inline":"none";
+    promptq.style.opacity="1";
+    nextBtn.textContent="めくる";
+    renderBeads();cardEl.classList.remove("swap");
+    tShow=Date.now();
+  };
+  if(swap){cardEl.classList.add("swap");setTimeout(paint,200);}else paint();
+  showCoach();syncTop();
+}
+
+function reveal(){
+  if(revealed||!cur)return;revealed=true;
+  /* đáp án = các mặt còn lại */
+  vi.classList.remove("as-jp");
+  if(face==="jp"){ vi.textContent=cur.vi; $("#ansSub").textContent=cur.reading||""; }
+  else if(face==="reading"){ vi.textContent=cur.jp; vi.classList.add("as-jp"); $("#ansSub").textContent=cur.vi; }
+  else{ vi.textContent=cur.jp; vi.classList.add("as-jp"); $("#ansSub").textContent=cur.reading||""; }
+  $("#ansSub").style.display=$("#ansSub").textContent?"block":"none";
+  answer.classList.add("show");promptq.style.opacity="0";
+  nextBtn.textContent="覚えた";
+  const nx = Math.min(365, cur.interval===0?1:cur.interval===1?3:Math.round(cur.interval*cur.ease));
+  sched.innerHTML=`覚えた → <b>${nx}日後</b>に再登場 · 朧 → すぐ再登場 · 重み <b>${weightOf(cur)}</b>/20`;
+}
+cardEl.addEventListener("click",reveal);
+
+function answerCard(ok){
+  if(!cur)return;
+  if(!revealed){reveal();return;}
+  const rt=Date.now()-tShow;
+  const wasNew=cur.isNew;
+  grade(cur,ok);
+  log.push({id:cur.id,ok:ok?1:0,rt,ts:Date.now()});
+  if(wasNew){meta.newCount++;}
+  bumpStreak();
+  doneCount++;
+  persistAll();
+  next(true);
+}
+nextBtn.addEventListener("click",()=>answerCard(true));
+hardBtn.addEventListener("click",()=>{if(!revealed){reveal();return;}answerCard(false);});
+
+function bumpStreak(){
+  const tk=todayKey();
+  if(meta.streakDate===tk)return;
+  const y=new Date(Date.now()-DAY).toISOString().slice(0,10);
+  meta.streak = meta.streakDate===y ? meta.streak+1 : 1;
+  meta.streakDate=tk;
+}
+
+function showEmpty(){
+  cur=null;cardEl.style.display="none";donebox.style.display="block";
+  hardBtn.disabled=true;nextBtn.disabled=true;
+  $("#doneMsg").innerHTML=`カードがありません<br>＋ で追加`;
+  coach.classList.remove("on");syncTop();
+}
+
+/* ═══════════ SEARCH / ADD (giữ nguyên logic form) ═══════════ */
+function strip(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d");}
+function search(q){
+  q=q.trim();if(!q)return[];const qs=strip(q);
+  return dict.filter(e=>e.jp.includes(q)||e.reading.includes(q)||strip(e.vi).includes(qs)).slice(0,6);
+}
+const scrim=$("#scrim"),addSheet=$("#addSheet"),statSheet=$("#statSheet"),input=$("#input");
+function openSheet(el){scrim.classList.add("on");el.classList.add("on");}
+function closeSheets(){scrim.classList.remove("on");addSheet.classList.remove("on");statSheet.classList.remove("on");$("#addBtn").classList.remove("hide");}
+scrim.addEventListener("click",closeSheets);
+$("#addBtn").addEventListener("click",()=>{resetAdd();openSheet(addSheet);$("#addBtn").classList.add("hide");setTimeout(()=>input.focus(),350);});
+$("#brainBtn").addEventListener("click",()=>{syncStats();openSheet(statSheet);});
+function resetAdd(){input.value="";$("#sugg").style.display="block";$("#sugg").innerHTML="";
+  $("#preview").style.display="none";$("#manual").style.display="none";$("#addHint").style.display="block";}
+input.addEventListener("input",()=>{
+  $("#preview").style.display="none";$("#manual").style.display="none";
+  $("#sugg").style.display="block";$("#addHint").style.display="none";renderSugg(input.value);});
+function inDeck(jpw){return cards.some(c=>c.jp===jpw);}
+function renderSugg(q){
+  const sg=$("#sugg");const res=search(q);
+  if(!q.trim()){sg.innerHTML="";$("#addHint").style.display="block";return;}
+  /* Kết quả chỉ là GỢI Ý chứa chuỗi tìm — nút thêm mới LUÔN hiển thị,
+     tránh nhầm: gõ 場 thấy 市場 nhưng 場 riêng chưa có vẫn thêm được */
+  const exact = dict.some(e=>e.jp===q.trim());
+  const rows = res.map((e,i)=>`<div class="sugg-row" data-i="${i}">
+     <span class="s-jp">${esc(e.jp)}</span>
+     ${inDeck(e.jp)?'<span class="s-in">追加済</span>':`<span class="s-jlpt">${e.jlpt}</span>`}</div>`).join("");
+  const addBtn = exact ? "" :
+    `<div class="addrow"><button class="btn" id="goMan">＋ 新規追加「${esc(q.trim())}」</button></div>`;
+  sg.innerHTML = rows + addBtn;
+  [...sg.querySelectorAll(".sugg-row")].forEach((row,i)=>row.onclick=()=>openPreview(res[i]));
+  const gm=$("#goMan"); if(gm) gm.onclick=()=>openManual(q.trim());
+}
+function openPreview(e){
+  $("#sugg").style.display="none";$("#manual").style.display="none";$("#addHint").style.display="none";
+  const pv=$("#preview");pv.style.display="block";
+  $("#pvJp").textContent=e.jp;$("#pvJp").classList.toggle("long",e.jp.length>6);
+  $("#pvRd").textContent=e.reading||"";
+  $("#pvVi").textContent=e.vi;$("#pvJlpt").textContent="JLPT "+e.jlpt;$("#pvType").textContent=typeJP(e.type);
+  const ks=[...e.jp].filter(c=>KANJI[c]);
+  $("#pvK").innerHTML=ks.map(c=>{const k=KANJI[c];return `<div class="kchip"><span class="kc">${c}</span>
+     <span class="kr">${esc(k[0])}</span><span class="kv">${esc(k[1])}</span></div>`;}).join("");
+  $("#pvL3").style.display=ks.length?"block":"none";
+  $("#pvNote").textContent=e.note||"";$("#pvL4").style.display=e.note?"block":"none";
+  ["pvL1","pvL2","pvL3","pvL4"].forEach(id=>$("#"+id).classList.remove("on"));
+  ["pvL1","pvL2","pvL3","pvL4"].forEach((id,i)=>setTimeout(()=>$("#"+id).classList.add("on"),120+i*160));
+  const dup=inDeck(e.jp);
+  $("#addPv").textContent=dup?"追加済み":"復習に追加";
+  $("#addPv").disabled=dup;
+  $("#addPv").onclick=()=>commit(e);
+}
+$("#backSugg").onclick=()=>{$("#preview").style.display="none";$("#sugg").style.display="block";renderSugg(input.value);};
+let mType="語彙",mJlpt="N5";
+function bindSeg(id,setter){document.querySelector(id).addEventListener("click",e=>{
+  const s=e.target.closest("span");if(!s)return;
+  document.querySelectorAll(id+" span").forEach(x=>x.classList.remove("on"));s.classList.add("on");setter(s.dataset.v);});}
+bindSeg("#mType",v=>mType=v);bindSeg("#mJlpt",v=>mJlpt=v);
+function openManual(prefill){
+  $("#sugg").style.display="none";$("#preview").style.display="none";$("#addHint").style.display="none";
+  $("#manual").style.display="block";
+  $("#mJp").value=prefill||"";$("#mRd").value="";$("#mVi").value="";
+  setTimeout(()=>$("#mVi").focus(),100);
+}
+$("#backSugg2").onclick=()=>{$("#manual").style.display="none";$("#sugg").style.display="block";renderSugg(input.value);};
+$("#addMan").onclick=()=>{
+  const e={jp:$("#mJp").value.trim(),reading:$("#mRd").value.trim(),vi:$("#mVi").value.trim(),type:mType,jlpt:mJlpt,note:""};
+  if(!e.jp||!e.vi){toast("語と意味は必須です");return;}
+  if(inDeck(e.jp)){toast("追加済みです");return;}
+  dict.unshift(e);commit(e,true);
+};
+function commit(e,grew){
+  cards.push(mkCard(e));
+  persistAll();closeSheets();
+  toast(`「${e.jp}」を追加しました`);
+  if(!cur) next(false); else {renderBeads();syncTop();}
+  syncDictN();
+}
+
+/* ═══════════ STATS THẬT ═══════════ */
+function syncTop(){
+  const m=cards.filter(c=>c.interval>=MASTER_DAYS).length;
+  const pct=cards.length?Math.round(m/cards.length*100):0;
+  $("#capNum").textContent=pct;$("#capRing").style.setProperty("--cap",pct+"%");
+}
+function syncStats(){
+  const t=today();
+  $("#sTotal").textContent=cards.length;
+  $("#sMaster").textContent=cards.filter(c=>c.interval>=MASTER_DAYS).length;
+  $("#sDebt").textContent=cards.filter(c=>!c.isNew&&c.due<=t).length;
+  const wk=log.filter(l=>l.ts>Date.now()-7*DAY);
+  $("#sRet").textContent=wk.length?Math.round(wk.filter(l=>l.ok).length/wk.length*100)+"%":"—";
+  const last=log.slice(-20);
+  $("#sReact").textContent=last.length?(last.reduce((s,l)=>s+l.rt,0)/last.length/1000).toFixed(1)+"s":"—";
+  $("#sStreak").textContent=meta.streak+(meta.streak?" 日":"");
+  $("#sDict").textContent=dict.length;
+}
+function syncDictN(){$("#dictN").textContent=dict.length;$("#sDict").textContent=dict.length;}
+$("#resetBtn").addEventListener("click",()=>{
+  if(!confirm("全カード・ログ・追加辞書を消去しますか？"))return;
+  if(!confirm("本当に消去しますか？元に戻せません。\n（直近7日のバックアップは保持されます）"))return;
+  makeBackup(); // chốt 1 bản cuối trước khi xoá
+  Object.values(LS).forEach(k=>localStorage.removeItem(k));location.reload();
+});
+
+/* MERUVA credit */
+$("#meruva").addEventListener("click",()=>$("#mrvModal").classList.add("on"));
+$("#mrvNo").addEventListener("click",()=>$("#mrvModal").classList.remove("on"));
+$("#mrvYes").addEventListener("click",()=>{$("#mrvModal").classList.remove("on");window.open("https://meruva.vn","_blank");});
+
+/* ═══════════ helpers ═══════════ */
+const TYPE_JP={vocab:"語彙",grammar:"文法",kanji:"漢字",sentence:"文",
+  "Từ vựng":"語彙","Ngữ pháp":"文法","Kanji":"漢字","Câu":"文",
+  "語彙":"語彙","文法":"文法","漢字":"漢字","文":"文"};
+function typeJP(t){return TYPE_JP[t]||t||"語彙";}
+function esc(s){return (s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+let tT;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(tT);tT=setTimeout(()=>t.classList.remove("on"),2200);}
+input.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();const r=search(input.value);if(r.length)openPreview(r[0]);else openManual(input.value);}});
+
+/* ═══════════ TỪ ĐIỂN NGOÀI: dict.json (cùng thư mục) ═══════════
+   • entries: thay-thế-theo-jp mục hệ thống, KHÔNG xoá mục user thêm tay
+   • kanji: merge vào bảng tách kanji
+   • Mở qua file:// trình duyệt chặn fetch → chỉ hoạt động khi
+     deploy (GitHub Pages) hoặc chạy localhost. Offline vẫn chạy bình thường. */
+async function loadExternalDict(){
+  try{
+    const r=await fetch("dict.json",{cache:"no-store"});
+    if(!r.ok)return;
+    const d=await r.json();
+    if(d.kanji) for(const k in d.kanji){
+      const v=d.kanji[k];
+      KANJI[k]=Array.isArray(v)?v:[v.reading||"",v.hanviet||v.vi||""];
+    }
+    let n=0;
+    (d.entries||[]).forEach(e=>{
+      if(!e.jp||!e.vi)return;
+      const it={jp:e.jp,reading:e.reading||"",vi:e.vi,jlpt:e.jlpt||"N5",type:e.type||"vocab",note:e.note||""};
+      const i=dict.findIndex(x=>x.jp===e.jp);
+      if(i>=0) dict[i]=it; else dict.push(it);
+      n++;
+    });
+    if(n){ save(LS.dict,dict); syncDictN(); }
+  }catch(err){/* không có file / offline → bỏ qua, dùng dict trong máy */}
+}
+
+/* init */
+setDate();next(false);syncDictN();syncStats();loadExternalDict();
+</script>
+</body>
+</html>
