@@ -1,0 +1,1812 @@
+{
+  "_HUONG_DAN": [
+    "File từ điển ngoài cho AKOS — đặt CÙNG THƯ MỤC với file HTML.",
+    "Chỉnh sửa xong lưu lại, mở app là tự nạp (cần chạy qua GitHub Pages / localhost, mở file:// thì trình duyệt chặn fetch).",
+    "QUY TẮC MERGE: mục trong 'entries' trùng 'jp' sẽ THAY THẾ mục hệ thống cũ; mục 'jp' mới sẽ được THÊM. Không bao giờ xoá mục người dùng tự thêm trong app.",
+    "type nhận 1 trong 4 giá trị: vocab (từ vựng) | grammar (ngữ pháp) | kanji | sentence (câu).",
+    "jlpt nhận: N5 | N4 | N3 | N2 | N1.",
+    "reading và note để chuỗi rỗng \"\" nếu không có.",
+    "Mục 'kanji' bên dưới là bảng TÁCH KANJI (hiện chip nhỏ khi preview từ) — khác với entry type kanji là 1 thẻ học riêng."
+  ],
+  "version": 1,
+  "kanji": {
+    "市": {
+      "reading": "シ・いち",
+      "hanviet": "THỊ chợ, thành phố"
+    },
+    "場": {
+      "reading": "ジョウ・ば",
+      "hanviet": "TRƯỜNG nơi chốn"
+    },
+    "都": {
+      "reading": "ト・みやこ",
+      "hanviet": "ĐÔ kinh đô"
+    },
+    "一": {
+      "reading": "イチ・ひと",
+      "hanviet": "NHẤT một, đầu tiên"
+    },
+    "二": {
+      "reading": "ニ・ふた",
+      "hanviet": "NHỊ hai"
+    },
+    "三": {
+      "reading": "サン・みっ",
+      "hanviet": "TAM ba"
+    },
+    "四": {
+      "reading": "シ・よん",
+      "hanviet": "TỨ bốn"
+    },
+    "五": {
+      "reading": "ゴ・いつ",
+      "hanviet": "NGŨ năm"
+    },
+    "六": {
+      "reading": "ロク・むっ",
+      "hanviet": "LỤC sáu"
+    },
+    "七": {
+      "reading": "シチ・なな",
+      "hanviet": "THẤT bảy"
+    },
+    "八": {
+      "reading": "ハチ・やっ",
+      "hanviet": "BÁT tám"
+    },
+    "九": {
+      "reading": "キュウ・ここの",
+      "hanviet": "CỬU chín"
+    },
+    "十": {
+      "reading": "ジュウ・とお",
+      "hanviet": "THẬP mười"
+    },
+    "百": {
+      "reading": "ヒャク",
+      "hanviet": "BÁCH một trăm"
+    },
+    "千": {
+      "reading": "セン・ち",
+      "hanviet": "THIÊN một nghìn"
+    },
+    "万": {
+      "reading": "マン・よろず",
+      "hanviet": "VẠN mười nghìn, vạn"
+    },
+    "円": {
+      "reading": "エン・まる",
+      "hanviet": "VIÊN tròn, yên (tiền tệ)"
+    },
+    "時": {
+      "reading": "ジ・とき",
+      "hanviet": "THỜI thời gian, giờ"
+    },
+    "間": {
+      "reading": "カン・あいだ",
+      "hanviet": "GIAN khoảng giữa, gian, phòng"
+    },
+    "分": {
+      "reading": "ブン・わ",
+      "hanviet": "PHÂN phút, phần, chia"
+    },
+    "半": {
+      "reading": "ハン・なか",
+      "hanviet": "BÁN một nửa"
+    },
+    "年": {
+      "reading": "ネン・とし",
+      "hanviet": "NIÊN năm"
+    },
+    "月": {
+      "reading": "ゲツ・つき",
+      "hanviet": "NGUYỆT tháng, mặt trăng"
+    },
+    "日": {
+      "reading": "ニチ・ひ",
+      "hanviet": "NHẬT ngày, mặt trời"
+    },
+    "火": {
+      "reading": "カ・ひ",
+      "hanviet": "HỎA lửa"
+    },
+    "水": {
+      "reading": "スイ・みず",
+      "hanviet": "THỦY nước"
+    },
+    "木": {
+      "reading": "モク・き",
+      "hanviet": "MỘC cây, gỗ"
+    },
+    "金": {
+      "reading": "キン・かね",
+      "hanviet": "KIM vàng, tiền"
+    },
+    "土": {
+      "reading": "ド・つち",
+      "hanviet": "THỔ đất"
+    },
+    "曜": {
+      "reading": "ヨウ",
+      "hanviet": "DIỆU ngày trong tuần"
+    },
+    "上": {
+      "reading": "ジョウ・うえ",
+      "hanviet": "THƯỢNG trên, lên"
+    },
+    "下": {
+      "reading": "カ・した",
+      "hanviet": "HẠ dưới, xuống"
+    },
+    "左": {
+      "reading": "サ・ひだり",
+      "hanviet": "TẢ trái"
+    },
+    "右": {
+      "reading": "ユウ・みぎ",
+      "hanviet": "HỮU phải"
+    },
+    "中": {
+      "reading": "チュウ・なか",
+      "hanviet": "TRUNG giữa, trong"
+    },
+    "大": {
+      "reading": "ダイ・おおきい",
+      "hanviet": "ĐẠI to, lớn"
+    },
+    "小": {
+      "reading": "ショウ・ちいさい",
+      "hanviet": "TIỂU nhỏ"
+    },
+    "人": {
+      "reading": "ジン・ひと",
+      "hanviet": "NHÂN người"
+    },
+    "口": {
+      "reading": "コウ・くち",
+      "hanviet": "KHẨU miệng"
+    },
+    "目": {
+      "reading": "モク・め",
+      "hanviet": "MỤC mắt"
+    },
+    "耳": {
+      "reading": "ジ・みみ",
+      "hanviet": "NHĨ tai"
+    },
+    "手": {
+      "reading": "シュ・て",
+      "hanviet": "THỦ tay"
+    },
+    "足": {
+      "reading": "ソク・あし",
+      "hanviet": "TÚC chân, đủ"
+    },
+    "見": {
+      "reading": "ケン・みる",
+      "hanviet": "KIẾN nhìn, xem"
+    },
+    "行": {
+      "reading": "コウ・いく",
+      "hanviet": "HÀNH đi, thực hiện"
+    },
+    "来": {
+      "reading": "ライ・くる",
+      "hanviet": "LAI đến"
+    },
+    "出": {
+      "reading": "シュツ・でる",
+      "hanviet": "XUẤT ra, xuất hiện"
+    },
+    "入": {
+      "reading": "ニュウ・はいる",
+      "hanviet": "NHẬP vào, nhập"
+    },
+    "学": {
+      "reading": "ガク・まなぶ",
+      "hanviet": "HỌC học"
+    },
+    "校": {
+      "reading": "コウ",
+      "hanviet": "HIỆU trường học"
+    },
+    "生": {
+      "reading": "セイ・いきる",
+      "hanviet": "SINH sống, sinh ra"
+    },
+    "先": {
+      "reading": "セン・さき",
+      "hanviet": "TIÊN trước, trước đây"
+    },
+    "川": {
+      "reading": "セン・かわ",
+      "hanviet": "XUYÊN sông"
+    },
+    "山": {
+      "reading": "サン・やま",
+      "hanviet": "SƠN núi"
+    },
+    "天": {
+      "reading": "テン・あま",
+      "hanviet": "THIÊN trời"
+    },
+    "気": {
+      "reading": "キ",
+      "hanviet": "KHÍ khí, tinh thần"
+    },
+    "田": {
+      "reading": "デン・た",
+      "hanviet": "ĐIỀN ruộng"
+    },
+    "雨": {
+      "reading": "ウ・あめ",
+      "hanviet": "VŨ mưa"
+    },
+    "電": {
+      "reading": "デン",
+      "hanviet": "ĐIỆN điện"
+    },
+    "車": {
+      "reading": "シャ・くるま",
+      "hanviet": "XA xe"
+    },
+    "語": {
+      "reading": "ゴ・かたる",
+      "hanviet": "NGỮ ngôn ngữ, nói"
+    },
+    "言": {
+      "reading": "ゲン・いう",
+      "hanviet": "NGÔN nói"
+    },
+    "話": {
+      "reading": "ワ・はなす",
+      "hanviet": "THOẠI nói chuyện, câu chuyện"
+    },
+    "聞": {
+      "reading": "ブン・きく",
+      "hanviet": "VĂN nghe"
+    },
+    "食": {
+      "reading": "ショク・たべる",
+      "hanviet": "THỰC ăn"
+    },
+    "飲": {
+      "reading": "イン・のむ",
+      "hanviet": "ẨM uống"
+    },
+    "読": {
+      "reading": "ドク・よむ",
+      "hanviet": "ĐỘC đọc"
+    },
+    "書": {
+      "reading": "ショ・かく",
+      "hanviet": "THƯ viết"
+    },
+    "友": {
+      "reading": "ユウ・とも",
+      "hanviet": "HỮU bạn"
+    },
+    "名": {
+      "reading": "メイ・な",
+      "hanviet": "DANH tên"
+    },
+    "女": {
+      "reading": "ジョ・おんな",
+      "hanviet": "NỮ nữ, phụ nữ"
+    },
+    "男": {
+      "reading": "ダン・おとこ",
+      "hanviet": "NAM nam, đàn ông"
+    },
+    "子": {
+      "reading": "シ・こ",
+      "hanviet": "TỬ con, đứa trẻ"
+    },
+    "父": {
+      "reading": "フ・ちち",
+      "hanviet": "PHỤ bố"
+    },
+    "母": {
+      "reading": "ボ・はは",
+      "hanviet": "MẪU mẹ"
+    },
+    "東": {
+      "reading": "トウ・ひがし",
+      "hanviet": "ĐÔNG đông"
+    },
+    "西": {
+      "reading": "セイ・にし",
+      "hanviet": "TÂY tây"
+    },
+    "南": {
+      "reading": "ナン・みなみ",
+      "hanviet": "NAM nam"
+    },
+    "北": {
+      "reading": "ホク・きた",
+      "hanviet": "BẮC bắc"
+    },
+    "国": {
+      "reading": "コク・くに",
+      "hanviet": "QUỐC quốc gia"
+    },
+    "外": {
+      "reading": "ガイ・そと",
+      "hanviet": "NGOẠI bên ngoài"
+    },
+    "前": {
+      "reading": "ゼン・まえ",
+      "hanviet": "TIỀN trước, phía trước"
+    },
+    "後": {
+      "reading": "ゴ・うしろ",
+      "hanviet": "HẬU sau, phía sau"
+    },
+    "今": {
+      "reading": "コン・いま",
+      "hanviet": "KIM bây giờ"
+    },
+    "何": {
+      "reading": "カ・なに",
+      "hanviet": "HÀ cái gì"
+    },
+    "毎": {
+      "reading": "マイ",
+      "hanviet": "MỖI mỗi"
+    },
+    "新": {
+      "reading": "シン・あたらしい",
+      "hanviet": "TÂN mới"
+    },
+    "古": {
+      "reading": "コ・ふるい",
+      "hanviet": "CỔ cũ"
+    },
+    "高": {
+      "reading": "コウ・たかい",
+      "hanviet": "CAO cao, đắt"
+    },
+    "安": {
+      "reading": "アン・やすい",
+      "hanviet": "AN rẻ, an toàn"
+    },
+    "多": {
+      "reading": "タ・おおい",
+      "hanviet": "ĐA nhiều"
+    },
+    "少": {
+      "reading": "ショウ・すくない",
+      "hanviet": "THIỂU ít"
+    },
+    "長": {
+      "reading": "チョウ・ながい",
+      "hanviet": "TRƯỜNG dài, trưởng"
+    },
+    "白": {
+      "reading": "ハク・しろ",
+      "hanviet": "BẠCH trắng"
+    },
+    "赤": {
+      "reading": "セキ・あか",
+      "hanviet": "XÍCH đỏ"
+    },
+    "青": {
+      "reading": "セイ・あお",
+      "hanviet": "THANH xanh"
+    },
+    "夕": {
+      "reading": "セキ・ゆう",
+      "hanviet": "TỊCH chiều tối"
+    },
+    "朝": {
+      "reading": "チョウ・あさ",
+      "hanviet": "TRIÊU buổi sáng"
+    },
+    "昼": {
+      "reading": "チュウ・ひる",
+      "hanviet": "TRÚ buổi trưa"
+    },
+    "夜": {
+      "reading": "ヤ・よる",
+      "hanviet": "DẠ đêm"
+    },
+    "本": {
+      "reading": "ホン・もと",
+      "hanviet": "BẢN sách, gốc"
+    },
+    "休": {
+      "reading": "キュウ・やすむ",
+      "hanviet": "HƯU nghỉ ngơi"
+    },
+    "会": {
+      "reading": "カイ・あう",
+      "hanviet": "HỘI gặp, hội"
+    },
+    "社": {
+      "reading": "シャ・やしろ",
+      "hanviet": "XÃ đền thờ, công ty"
+    },
+    "店": {
+      "reading": "テン・みせ",
+      "hanviet": "ĐIẾM cửa hàng"
+    },
+    "駅": {
+      "reading": "エキ",
+      "hanviet": "DỊCH ga tàu"
+    },
+    "道": {
+      "reading": "ドウ・みち",
+      "hanviet": "ĐẠO đường"
+    },
+    "町": {
+      "reading": "チョウ・まち",
+      "hanviet": "ĐINH thị trấn, phố"
+    },
+    "村": {
+      "reading": "ソン・むら",
+      "hanviet": "THÔN làng"
+    }
+  },
+  "entries": [
+    {
+      "jp": "市場",
+      "reading": "しじょう",
+      "vi": "thị trường",
+      "jlpt": "N3",
+      "type": "vocab",
+      "note": "Đọc いちば khi nghĩa là chợ (nơi mua bán trực tiếp)."
+    },
+    {
+      "jp": "都市",
+      "reading": "とし",
+      "vi": "thành phố, đô thị",
+      "jlpt": "N3",
+      "type": "vocab",
+      "note": ""
+    },
+    {
+      "jp": "場",
+      "reading": "ば",
+      "vi": "TRƯỜNG — nơi chốn, địa điểm",
+      "jlpt": "N4",
+      "type": "kanji",
+      "note": "Ghép: 市場 thị trường · 工場 công xưởng · 場所 địa điểm"
+    },
+    {
+      "jp": "〜に関して",
+      "reading": "~ni kanshite",
+      "vi": "liên quan đến, về việc...",
+      "jlpt": "N3",
+      "type": "grammar",
+      "note": "Trang trọng hơn について. Vd: 市場に関して調査する。"
+    },
+    {
+      "jp": "会議は明日の午後に変更されました。",
+      "reading": "かいぎはあしたのごごにへんこうされました",
+      "vi": "Cuộc họp đã được đổi sang chiều mai.",
+      "jlpt": "N4",
+      "type": "sentence",
+      "note": "Thể bị động ~されました."
+    },
+    {
+      "jp": "一",
+      "reading": "ひと",
+      "vi": "NHẤT — một, đầu tiên",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 一人 một người · 一日 một ngày"
+    },
+    {
+      "jp": "二",
+      "reading": "ふた",
+      "vi": "NHỊ — hai",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 二人 hai người · 二日 ngày mùng 2"
+    },
+    {
+      "jp": "三",
+      "reading": "みっ",
+      "vi": "TAM — ba",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 三人 ba người · 三日 ngày mùng 3"
+    },
+    {
+      "jp": "四",
+      "reading": "よん",
+      "vi": "TỨ — bốn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 四人 bốn người · 四日 ngày mùng 4"
+    },
+    {
+      "jp": "五",
+      "reading": "いつ",
+      "vi": "NGŨ — năm",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 五人 năm người · 五日 ngày mùng 5"
+    },
+    {
+      "jp": "六",
+      "reading": "むっ",
+      "vi": "LỤC — sáu",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 六人 sáu người · 六日 ngày mùng 6"
+    },
+    {
+      "jp": "七",
+      "reading": "なな",
+      "vi": "THẤT — bảy",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 七人 bảy người · 七日 ngày mùng 7"
+    },
+    {
+      "jp": "八",
+      "reading": "やっ",
+      "vi": "BÁT — tám",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 八人 tám người · 八日 ngày mùng 8"
+    },
+    {
+      "jp": "九",
+      "reading": "ここの",
+      "vi": "CỬU — chín",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 九人 chín người · 九日 ngày mùng 9"
+    },
+    {
+      "jp": "十",
+      "reading": "とお",
+      "vi": "THẬP — mười",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 十人 mười người · 十日 ngày mùng 10"
+    },
+    {
+      "jp": "百",
+      "reading": "ひゃく",
+      "vi": "BÁCH — một trăm",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 百円 100 yên"
+    },
+    {
+      "jp": "千",
+      "reading": "ち",
+      "vi": "THIÊN — một nghìn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 千円 1000 yên"
+    },
+    {
+      "jp": "万",
+      "reading": "よろず",
+      "vi": "VẠN — mười nghìn, vạn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 一万円 10.000 yên"
+    },
+    {
+      "jp": "円",
+      "reading": "まる",
+      "vi": "VIÊN — tròn, yên (tiền tệ)",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 百円 100 yên"
+    },
+    {
+      "jp": "時",
+      "reading": "とき",
+      "vi": "THỜI — thời gian, giờ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 時間 thời gian · 何時 mấy giờ"
+    },
+    {
+      "jp": "間",
+      "reading": "あいだ",
+      "vi": "GIAN — khoảng giữa, gian, phòng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 時間 thời gian · 人間 con người"
+    },
+    {
+      "jp": "分",
+      "reading": "わ",
+      "vi": "PHÂN — phút, phần, chia",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 一分 một phút · 分かる hiểu"
+    },
+    {
+      "jp": "半",
+      "reading": "なか",
+      "vi": "BÁN — một nửa",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 半分 một nửa · 一時半 1 giờ rưỡi"
+    },
+    {
+      "jp": "年",
+      "reading": "とし",
+      "vi": "NIÊN — năm",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 今年 năm nay · 一年 một năm"
+    },
+    {
+      "jp": "月",
+      "reading": "つき",
+      "vi": "NGUYỆT — tháng, mặt trăng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 一月 tháng 1 · 月曜日 thứ Hai"
+    },
+    {
+      "jp": "日",
+      "reading": "ひ",
+      "vi": "NHẬT — ngày, mặt trời",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 日曜日 Chủ nhật · 一日 ngày 1"
+    },
+    {
+      "jp": "火",
+      "reading": "ひ",
+      "vi": "HỎA — lửa",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 火曜日 thứ Ba"
+    },
+    {
+      "jp": "水",
+      "reading": "みず",
+      "vi": "THỦY — nước",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 水曜日 thứ Tư"
+    },
+    {
+      "jp": "木",
+      "reading": "き",
+      "vi": "MỘC — cây, gỗ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 木曜日 thứ Năm"
+    },
+    {
+      "jp": "金",
+      "reading": "かね",
+      "vi": "KIM — vàng, tiền",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 金曜日 thứ Sáu · お金 tiền"
+    },
+    {
+      "jp": "土",
+      "reading": "つち",
+      "vi": "THỔ — đất",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 土曜日 thứ Bảy"
+    },
+    {
+      "jp": "曜",
+      "reading": "よう",
+      "vi": "DIỆU — ngày trong tuần",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 曜日 ngày trong tuần"
+    },
+    {
+      "jp": "上",
+      "reading": "うえ",
+      "vi": "THƯỢNG — trên, lên",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 上 trên · 上がる đi lên"
+    },
+    {
+      "jp": "下",
+      "reading": "した",
+      "vi": "HẠ — dưới, xuống",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 下 dưới · 下がる xuống"
+    },
+    {
+      "jp": "左",
+      "reading": "ひだり",
+      "vi": "TẢ — trái",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 左 bên trái"
+    },
+    {
+      "jp": "右",
+      "reading": "みぎ",
+      "vi": "HỮU — phải",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 右 bên phải"
+    },
+    {
+      "jp": "中",
+      "reading": "なか",
+      "vi": "TRUNG — giữa, trong",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 中 bên trong · 中国 Trung Quốc"
+    },
+    {
+      "jp": "大",
+      "reading": "おおきい",
+      "vi": "ĐẠI — to, lớn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 大きい to · 大学 đại học"
+    },
+    {
+      "jp": "小",
+      "reading": "ちいさい",
+      "vi": "TIỂU — nhỏ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 小さい nhỏ · 小学生 học sinh tiểu học"
+    },
+    {
+      "jp": "人",
+      "reading": "ひと",
+      "vi": "NHÂN — người",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 人 người · 日本人 người Nhật"
+    },
+    {
+      "jp": "口",
+      "reading": "くち",
+      "vi": "KHẨU — miệng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 口 miệng · 人口 dân số"
+    },
+    {
+      "jp": "目",
+      "reading": "め",
+      "vi": "MỤC — mắt",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 目 mắt · 目的 mục đích"
+    },
+    {
+      "jp": "耳",
+      "reading": "みみ",
+      "vi": "NHĨ — tai",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 耳 tai"
+    },
+    {
+      "jp": "手",
+      "reading": "て",
+      "vi": "THỦ — tay",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 手 tay · 手紙 thư tay"
+    },
+    {
+      "jp": "足",
+      "reading": "あし",
+      "vi": "TÚC — chân, đủ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 足 chân · 足りる đủ"
+    },
+    {
+      "jp": "見",
+      "reading": "みる",
+      "vi": "KIẾN — nhìn, xem",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 見る nhìn · 見学 tham quan"
+    },
+    {
+      "jp": "行",
+      "reading": "いく",
+      "vi": "HÀNH — đi, thực hiện",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 行く đi · 銀行 ngân hàng"
+    },
+    {
+      "jp": "来",
+      "reading": "くる",
+      "vi": "LAI — đến",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 来る đến · 来年 năm sau"
+    },
+    {
+      "jp": "出",
+      "reading": "でる",
+      "vi": "XUẤT — ra, xuất hiện",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 出る ra · 出口 lối ra"
+    },
+    {
+      "jp": "入",
+      "reading": "はいる",
+      "vi": "NHẬP — vào, nhập",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 入る vào · 入口 lối vào"
+    },
+    {
+      "jp": "学",
+      "reading": "まなぶ",
+      "vi": "HỌC — học",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 学生 học sinh · 学校 trường học"
+    },
+    {
+      "jp": "校",
+      "reading": "こう",
+      "vi": "HIỆU — trường học",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 学校 trường học"
+    },
+    {
+      "jp": "生",
+      "reading": "いきる",
+      "vi": "SINH — sống, sinh ra",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 学生 học sinh · 生きる sống"
+    },
+    {
+      "jp": "先",
+      "reading": "さき",
+      "vi": "TIÊN — trước, trước đây",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 先 phía trước · 先生 giáo viên"
+    },
+    {
+      "jp": "川",
+      "reading": "かわ",
+      "vi": "XUYÊN — sông",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 川 sông"
+    },
+    {
+      "jp": "山",
+      "reading": "やま",
+      "vi": "SƠN — núi",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 山 núi"
+    },
+    {
+      "jp": "天",
+      "reading": "あま",
+      "vi": "THIÊN — trời",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 天気 thời tiết"
+    },
+    {
+      "jp": "気",
+      "reading": "き",
+      "vi": "KHÍ — khí, tinh thần",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 元気 khỏe mạnh · 天気 thời tiết"
+    },
+    {
+      "jp": "田",
+      "reading": "た",
+      "vi": "ĐIỀN — ruộng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 田 ruộng"
+    },
+    {
+      "jp": "雨",
+      "reading": "あめ",
+      "vi": "VŨ — mưa",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 雨 mưa"
+    },
+    {
+      "jp": "電",
+      "reading": "でん",
+      "vi": "ĐIỆN — điện",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 電気 điện · 電車 tàu điện"
+    },
+    {
+      "jp": "車",
+      "reading": "くるま",
+      "vi": "XA — xe",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 車 xe ô tô · 電車 tàu điện"
+    },
+    {
+      "jp": "語",
+      "reading": "かたる",
+      "vi": "NGỮ — ngôn ngữ, nói",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 日本語 tiếng Nhật · 語る kể chuyện"
+    },
+    {
+      "jp": "言",
+      "reading": "いう",
+      "vi": "NGÔN — nói",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 言う nói · 言葉 từ ngữ"
+    },
+    {
+      "jp": "話",
+      "reading": "はなす",
+      "vi": "THOẠI — nói chuyện, câu chuyện",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 話す nói chuyện · 話 câu chuyện"
+    },
+    {
+      "jp": "聞",
+      "reading": "きく",
+      "vi": "VĂN — nghe",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 聞く nghe · 新聞 báo"
+    },
+    {
+      "jp": "食",
+      "reading": "たべる",
+      "vi": "THỰC — ăn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 食べる ăn · 食事 bữa ăn"
+    },
+    {
+      "jp": "飲",
+      "reading": "のむ",
+      "vi": "ẨM — uống",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 飲む uống · 飲み物 đồ uống"
+    },
+    {
+      "jp": "読",
+      "reading": "よむ",
+      "vi": "ĐỘC — đọc",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 読む đọc · 読書 đọc sách"
+    },
+    {
+      "jp": "書",
+      "reading": "かく",
+      "vi": "THƯ — viết",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 書く viết · 辞書 từ điển"
+    },
+    {
+      "jp": "友",
+      "reading": "とも",
+      "vi": "HỮU — bạn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 友達 bạn bè"
+    },
+    {
+      "jp": "名",
+      "reading": "な",
+      "vi": "DANH — tên",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 名前 tên · 有名 nổi tiếng"
+    },
+    {
+      "jp": "女",
+      "reading": "おんな",
+      "vi": "NỮ — nữ, phụ nữ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 女 phụ nữ · 女の子 con gái"
+    },
+    {
+      "jp": "男",
+      "reading": "おとこ",
+      "vi": "NAM — nam, đàn ông",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 男 đàn ông · 男の子 con trai"
+    },
+    {
+      "jp": "子",
+      "reading": "こ",
+      "vi": "TỬ — con, đứa trẻ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 子供 trẻ con · 女の子 con gái"
+    },
+    {
+      "jp": "父",
+      "reading": "ちち",
+      "vi": "PHỤ — bố",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 父 bố · お父さん bố"
+    },
+    {
+      "jp": "母",
+      "reading": "はは",
+      "vi": "MẪU — mẹ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 母 mẹ · お母さん mẹ"
+    },
+    {
+      "jp": "東",
+      "reading": "ひがし",
+      "vi": "ĐÔNG — đông",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 東 phía đông · 東京 Tokyo"
+    },
+    {
+      "jp": "西",
+      "reading": "にし",
+      "vi": "TÂY — tây",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 西 phía tây"
+    },
+    {
+      "jp": "南",
+      "reading": "みなみ",
+      "vi": "NAM — nam",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 南 phía nam"
+    },
+    {
+      "jp": "北",
+      "reading": "きた",
+      "vi": "BẮC — bắc",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 北 phía bắc"
+    },
+    {
+      "jp": "国",
+      "reading": "くに",
+      "vi": "QUỐC — quốc gia",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 国 đất nước · 中国 Trung Quốc"
+    },
+    {
+      "jp": "外",
+      "reading": "そと",
+      "vi": "NGOẠI — bên ngoài",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 外 bên ngoài · 外国 nước ngoài"
+    },
+    {
+      "jp": "前",
+      "reading": "まえ",
+      "vi": "TIỀN — trước, phía trước",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 前 trước · 前日 ngày hôm trước"
+    },
+    {
+      "jp": "後",
+      "reading": "うしろ",
+      "vi": "HẬU — sau, phía sau",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 後 sau · 後で sau này"
+    },
+    {
+      "jp": "今",
+      "reading": "いま",
+      "vi": "KIM — bây giờ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 今 bây giờ · 今日 hôm nay"
+    },
+    {
+      "jp": "何",
+      "reading": "なに",
+      "vi": "HÀ — cái gì",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 何 cái gì · 何時 mấy giờ"
+    },
+    {
+      "jp": "毎",
+      "reading": "まい",
+      "vi": "MỖI — mỗi",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 毎日 mỗi ngày · 毎年 mỗi năm"
+    },
+    {
+      "jp": "新",
+      "reading": "あたらしい",
+      "vi": "TÂN — mới",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 新しい mới · 新聞 báo"
+    },
+    {
+      "jp": "古",
+      "reading": "ふるい",
+      "vi": "CỔ — cũ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 古い cũ"
+    },
+    {
+      "jp": "高",
+      "reading": "たかい",
+      "vi": "CAO — cao, đắt",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 高い cao/đắt · 高校 trường cấp 3"
+    },
+    {
+      "jp": "安",
+      "reading": "やすい",
+      "vi": "AN — rẻ, an toàn",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 安い rẻ · 安全 an toàn"
+    },
+    {
+      "jp": "多",
+      "reading": "おおい",
+      "vi": "ĐA — nhiều",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 多い nhiều · 多分 có lẽ"
+    },
+    {
+      "jp": "少",
+      "reading": "すくない",
+      "vi": "THIỂU — ít",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 少ない ít · 少し một chút"
+    },
+    {
+      "jp": "長",
+      "reading": "ながい",
+      "vi": "TRƯỜNG — dài, trưởng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 長い dài · 校長 hiệu trưởng"
+    },
+    {
+      "jp": "白",
+      "reading": "しろ",
+      "vi": "BẠCH — trắng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 白い trắng"
+    },
+    {
+      "jp": "赤",
+      "reading": "あか",
+      "vi": "XÍCH — đỏ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 赤い đỏ"
+    },
+    {
+      "jp": "青",
+      "reading": "あお",
+      "vi": "THANH — xanh",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 青い xanh"
+    },
+    {
+      "jp": "夕",
+      "reading": "ゆう",
+      "vi": "TỊCH — chiều tối",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 夕方 chiều tối"
+    },
+    {
+      "jp": "朝",
+      "reading": "あさ",
+      "vi": "TRIÊU — buổi sáng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 朝ごはん bữa sáng"
+    },
+    {
+      "jp": "昼",
+      "reading": "ひる",
+      "vi": "TRÚ — buổi trưa",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 昼ごはん bữa trưa"
+    },
+    {
+      "jp": "夜",
+      "reading": "よる",
+      "vi": "DẠ — đêm",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 夜ごはん bữa tối"
+    },
+    {
+      "jp": "本",
+      "reading": "もと",
+      "vi": "BẢN — sách, gốc",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 本 sách · 日本 Nhật Bản"
+    },
+    {
+      "jp": "休",
+      "reading": "やすむ",
+      "vi": "HƯU — nghỉ ngơi",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 休む nghỉ · 休日 ngày nghỉ"
+    },
+    {
+      "jp": "会",
+      "reading": "あう",
+      "vi": "HỘI — gặp, hội",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 会う gặp · 会社 công ty"
+    },
+    {
+      "jp": "社",
+      "reading": "やしろ",
+      "vi": "XÃ — đền thờ, công ty",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 会社 công ty · 神社 đền thờ"
+    },
+    {
+      "jp": "店",
+      "reading": "みせ",
+      "vi": "ĐIẾM — cửa hàng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 店 cửa hàng · 本屋 hiệu sách"
+    },
+    {
+      "jp": "駅",
+      "reading": "えき",
+      "vi": "DỊCH — ga tàu",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 駅 ga tàu"
+    },
+    {
+      "jp": "道",
+      "reading": "みち",
+      "vi": "ĐẠO — đường",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 道 đường · 北海道 Hokkaido"
+    },
+    {
+      "jp": "町",
+      "reading": "まち",
+      "vi": "ĐINH — thị trấn, phố",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 町 thị trấn"
+    },
+    {
+      "jp": "市",
+      "reading": "いち",
+      "vi": "THỊ — thành phố, chợ",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 市 thành phố · 市場 chợ"
+    },
+    {
+      "jp": "村",
+      "reading": "むら",
+      "vi": "THÔN — làng",
+      "jlpt": "N5",
+      "type": "kanji",
+      "note": "Ghép: 村 làng"
+    },
+    {
+      "jp": "Nです",
+      "reading": "N desu",
+      "vi": "N là ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Thể lịch sự khẳng định. Vd: 学生です（tôi là học sinh）。"
+    },
+    {
+      "jp": "Nじゃありません",
+      "reading": "N ja arimasen",
+      "vi": "N không phải là ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Cũng nói N ではありません (trang trọng hơn). Vd: 学生じゃありません。"
+    },
+    {
+      "jp": "Nですか",
+      "reading": "N desu ka",
+      "vi": "N phải không?／có phải là N không?",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Câu hỏi thêm か vào cuối câu N です. Vd: 学生ですか。"
+    },
+    {
+      "jp": "Aいです",
+      "reading": "A i desu",
+      "vi": "(tính từ đuôi い) ... đấy",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 高いです（đắt）。"
+    },
+    {
+      "jp": "Aくないです",
+      "reading": "A ku nai desu",
+      "vi": "không ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Cũng nói Aくありません. Vd: 高くないです（không đắt）。"
+    },
+    {
+      "jp": "Aかったです",
+      "reading": "A katta desu",
+      "vi": "đã ... (quá khứ)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 高かったです（đã đắt）。"
+    },
+    {
+      "jp": "Aくなかったです",
+      "reading": "A ku nakatta desu",
+      "vi": "đã không ... (quá khứ phủ định)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Cũng nói Aくありませんでした. Vd: 高くなかったです。"
+    },
+    {
+      "jp": "Naです",
+      "reading": "Na desu",
+      "vi": "(tính từ đuôi な) ... đấy",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: きれいです（đẹp）。"
+    },
+    {
+      "jp": "Naじゃありません",
+      "reading": "Na ja arimasen",
+      "vi": "không ... (tính từ な)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Cũng nói Naではありません. Vd: きれいじゃありません。"
+    },
+    {
+      "jp": "Naでした",
+      "reading": "Na deshita",
+      "vi": "đã ... (quá khứ, tính từ な)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: きれいでした。"
+    },
+    {
+      "jp": "Naじゃありませんでした",
+      "reading": "Na ja arimasen deshita",
+      "vi": "đã không ... (quá khứ phủ định, tính từ な)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Cũng nói Naではありませんでした. Vd: きれいじゃありませんでした。"
+    },
+    {
+      "jp": "Vます",
+      "reading": "V-masu",
+      "vi": "... (thể lịch sự)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行きます（đi）、食べます（ăn）。"
+    },
+    {
+      "jp": "Vません",
+      "reading": "V-masen",
+      "vi": "không ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行きません（không đi）。"
+    },
+    {
+      "jp": "Vました",
+      "reading": "V-mashita",
+      "vi": "đã ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行きました（đã đi）。"
+    },
+    {
+      "jp": "Vませんでした",
+      "reading": "V-masen deshita",
+      "vi": "đã không ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行きませんでした（đã không đi）。"
+    },
+    {
+      "jp": "Vて",
+      "reading": "V-te",
+      "vi": "... rồi (thể nối)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行って（đi rồi）、食べて（ăn rồi）。"
+    },
+    {
+      "jp": "Vています",
+      "reading": "V-te imasu",
+      "vi": "đang ... / có thói quen ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Diễn tả hành động đang tiếp diễn hoặc thói quen. Vd: 食べています（đang ăn）。"
+    },
+    {
+      "jp": "Vてください",
+      "reading": "V-te kudasai",
+      "vi": "hãy ... (đề nghị)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 食べてください（hãy ăn đi）。"
+    },
+    {
+      "jp": "Vてもいいです",
+      "reading": "V-te mo ii desu",
+      "vi": "có thể ... (cho phép)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 食べてもいいです（có thể ăn）。"
+    },
+    {
+      "jp": "Vてはいけません",
+      "reading": "V-te wa ikemasen",
+      "vi": "không được ... (cấm đoán)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 食べてはいけません（không được ăn）。"
+    },
+    {
+      "jp": "Vた",
+      "reading": "V-ta",
+      "vi": "đã ... (thể thường quá khứ)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行った（đã đi）、食べた（đã ăn）。"
+    },
+    {
+      "jp": "Vたことがあります",
+      "reading": "V-ta koto ga arimasu",
+      "vi": "đã từng ... (kinh nghiệm)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行ったことがあります（đã từng đi）。"
+    },
+    {
+      "jp": "Nは〜です",
+      "reading": "N wa ~ desu",
+      "vi": "N thì là ~ (chủ đề)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "は đánh dấu chủ đề câu. Vd: 私は学生です（tôi là học sinh）。"
+    },
+    {
+      "jp": "Nが〜です",
+      "reading": "N ga ~ desu",
+      "vi": "N là chủ ngữ của ~",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "が đánh dấu chủ ngữ. Vd: 雨が降っています（trời đang mưa）。"
+    },
+    {
+      "jp": "〜が好きです／嫌いです",
+      "reading": "~ ga suki desu / kirai desu",
+      "vi": "thích ~ / ghét ~",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: コーヒーが好きです（thích cà phê）。"
+    },
+    {
+      "jp": "Nを Vます",
+      "reading": "N o V-masu",
+      "vi": "... N (tân ngữ)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "を đánh dấu tân ngữ trực tiếp. Vd: 本を読みます（đọc sách）。"
+    },
+    {
+      "jp": "時間＋に",
+      "reading": "jikan + ni",
+      "vi": "vào lúc ... (thời điểm)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 7時に起きます（thức dậy lúc 7 giờ）。"
+    },
+    {
+      "jp": "場所＋に",
+      "reading": "basho + ni",
+      "vi": "đến ... (điểm đến)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 学校に行きます（đi đến trường）。"
+    },
+    {
+      "jp": "場所＋で Vます",
+      "reading": "basho + de V-masu",
+      "vi": "... ở ... (nơi diễn ra hành động)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 図書館で勉強します（học ở thư viện）。"
+    },
+    {
+      "jp": "手段＋で",
+      "reading": "shudan + de",
+      "vi": "bằng ... (phương tiện, cách thức)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 電車で行きます（đi bằng tàu điện）。"
+    },
+    {
+      "jp": "場所＋へ Vます",
+      "reading": "basho + e V-masu",
+      "vi": "đi về hướng ... (phương hướng)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 日本へ行きます（đi đến Nhật Bản）。"
+    },
+    {
+      "jp": "AとB",
+      "reading": "A to B",
+      "vi": "A và B (liệt kê danh từ)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: りんごとバナナ（táo và chuối）。"
+    },
+    {
+      "jp": "人＋と Vます",
+      "reading": "hito + to V-masu",
+      "vi": "... cùng với ai đó",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 友達と行きます（đi với bạn）。"
+    },
+    {
+      "jp": "Nも〜です",
+      "reading": "N mo ~ desu",
+      "vi": "N cũng ~",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 私も学生です（tôi cũng là học sinh）。"
+    },
+    {
+      "jp": "AからBまで",
+      "reading": "A kara B made",
+      "vi": "từ A đến B",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 9時から5時まで働きます（làm việc từ 9 giờ đến 5 giờ）。"
+    },
+    {
+      "jp": "何（なに／なん）",
+      "reading": "nani / nan",
+      "vi": "cái gì",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 何ですか？（cái gì vậy?）。"
+    },
+    {
+      "jp": "誰（だれ）",
+      "reading": "dare",
+      "vi": "ai",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 誰ですか？（ai vậy?）。"
+    },
+    {
+      "jp": "どこ",
+      "reading": "doko",
+      "vi": "ở đâu",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: どこですか？（ở đâu vậy?）。"
+    },
+    {
+      "jp": "いつ",
+      "reading": "itsu",
+      "vi": "khi nào",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: いつ行きますか？（khi nào sẽ đi?）。"
+    },
+    {
+      "jp": "どう／いかが",
+      "reading": "dō / ikaga",
+      "vi": "thế nào",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "いかが lịch sự hơn どう. Vd: どうですか？（thế nào?）。"
+    },
+    {
+      "jp": "いくら",
+      "reading": "ikura",
+      "vi": "bao nhiêu tiền",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: いくらですか？（bao nhiêu tiền?）。"
+    },
+    {
+      "jp": "どれ／どの",
+      "reading": "dore / dono",
+      "vi": "cái nào",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "どれ đứng một mình, どの + danh từ. Vd: どれがいいですか？（cái nào tốt?）。"
+    },
+    {
+      "jp": "これ／それ／あれ／どれ",
+      "reading": "kore / sore / are / dore",
+      "vi": "cái này／cái đó／cái kia／cái nào",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Chỉ định đồ vật (đứng một mình). Vd: これは何ですか？（cái này là gì?）。"
+    },
+    {
+      "jp": "この／その／あの／どの N",
+      "reading": "kono / sono / ano / dono N",
+      "vi": "N này／N đó／N kia／N nào",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Chỉ định + danh từ đi kèm. Vd: この本は高いです（cuốn sách này đắt）。"
+    },
+    {
+      "jp": "ここ／そこ／あそこ／どこ",
+      "reading": "koko / soko / asoko / doko",
+      "vi": "ở đây／ở đó／ở kia／ở đâu",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Chỉ nơi chốn. Vd: ここは学校です（đây là trường học）。"
+    },
+    {
+      "jp": "AはBより〜です",
+      "reading": "A wa B yori ~ desu",
+      "vi": "A thì ~ hơn B (so sánh)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 日本はベトナムより寒いです（Nhật Bản lạnh hơn Việt Nam）。"
+    },
+    {
+      "jp": "AとBとどちらが〜ですか",
+      "reading": "A to B to dochira ga ~ desu ka",
+      "vi": "A và B cái nào ~ hơn?",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: コーヒーと紅茶とどちらが好きですか？（cà phê và trà, cái nào bạn thích hơn?）。"
+    },
+    {
+      "jp": "とても〜です",
+      "reading": "totemo ~ desu",
+      "vi": "rất ~",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: とても高いです（rất đắt）。"
+    },
+    {
+      "jp": "あまり〜ません",
+      "reading": "amari ~ masen",
+      "vi": "không ~ lắm",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Đi kèm thể phủ định. Vd: あまり高くないです（không đắt lắm）。"
+    },
+    {
+      "jp": "全然〜ません",
+      "reading": "zenzen ~ masen",
+      "vi": "hoàn toàn không ~",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Đi kèm thể phủ định. Vd: 全然分かりません（hoàn toàn không hiểu）。"
+    },
+    {
+      "jp": "〜から、〜です",
+      "reading": "~ kara, ~ desu",
+      "vi": "vì ~ nên ~ (lý do)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 忙しいから、行きません（vì bận nên không đi）。"
+    },
+    {
+      "jp": "Vることができます",
+      "reading": "V-ru koto ga dekimasu",
+      "vi": "có thể ... được (khả năng)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 日本語を話すことができます（có thể nói tiếng Nhật）。"
+    },
+    {
+      "jp": "Vましょう",
+      "reading": "V-mashō",
+      "vi": "hãy cùng ... đi (rủ rê)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 行きましょう（hãy cùng đi đi）。"
+    },
+    {
+      "jp": "Vましょうか",
+      "reading": "V-mashō ka",
+      "vi": "để tôi ... nhé? (đề nghị giúp đỡ)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 手伝いましょうか？（tôi giúp bạn nhé?）。"
+    },
+    {
+      "jp": "Vたいです",
+      "reading": "V-tai desu",
+      "vi": "muốn ... (nguyện vọng của bản thân)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 日本に行きたいです（muốn đi Nhật Bản）。"
+    },
+    {
+      "jp": "Vなければなりません",
+      "reading": "V-nakereba narimasen",
+      "vi": "phải ... (nghĩa vụ)",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 勉強しなければなりません（phải học）。"
+    },
+    {
+      "jp": "Vる前に",
+      "reading": "V-ru mae ni",
+      "vi": "trước khi ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 寝る前に本を読みます（trước khi ngủ thì đọc sách）。"
+    },
+    {
+      "jp": "Vた後で",
+      "reading": "V-ta ato de",
+      "vi": "sau khi ...",
+      "jlpt": "N5",
+      "type": "grammar",
+      "note": "Vd: 食べた後で勉強します（sau khi ăn thì học）。"
+    }
+  ]
+}
